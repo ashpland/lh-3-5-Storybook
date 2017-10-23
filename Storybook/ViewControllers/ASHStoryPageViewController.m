@@ -12,8 +12,8 @@
 
 @interface ASHStoryPageViewController ()
 @property (strong, nonatomic) NSArray<ASHStoryPage *> *storyObjects;
-@property (assign, nonatomic) NSInteger currentPage;
-@property (assign, nonatomic) NSInteger lastPendingPage;
+@property (assign, nonatomic) NSInteger currentIndex;
+@property (assign, nonatomic) NSInteger upcomingIndex;
 
 @end
 
@@ -30,11 +30,9 @@
                            [[ASHStoryPage alloc] initWithID:@"Story 4"]
                            ];
     
-    self.currentPage = 0;
-    self.lastPendingPage = 0;
-    
     self.delegate = self;
     self.dataSource = self;
+    self.currentIndex = 0;
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -43,7 +41,7 @@
     [proxy setCurrentPageIndicatorTintColor:[UIColor blackColor]];
     [proxy setBackgroundColor:[UIColor whiteColor]];
     
-    [self setViewControllers:@[[self getPageAtIndex:self.currentPage]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    [self setViewControllers:@[[self getPageAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
 - (ASHStoryPartViewController *)getPageAtIndex:(NSInteger)index{
@@ -59,8 +57,10 @@
 
 - (nullable UIViewController *)pageViewController:(nonnull UIPageViewController *)pageViewController viewControllerBeforeViewController:(nonnull UIViewController *)viewController {
    
-    if (self.currentPage > 0){
-        return [self getPageAtIndex:self.currentPage - 1];
+    ASHStoryPartViewController *currentVC = (ASHStoryPartViewController *)viewController;
+    
+    if (currentVC.index > 0){
+        return [self getPageAtIndex:currentVC.index - 1];
     } else {
         return nil;
     }
@@ -68,35 +68,38 @@
 
 - (nullable UIViewController *)pageViewController:(nonnull UIPageViewController *)pageViewController viewControllerAfterViewController:(nonnull UIViewController *)viewController {
     
-    if (self.currentPage < (self.storyObjects.count - 1)){
-        return [self getPageAtIndex:self.currentPage + 1];
+    ASHStoryPartViewController *currentVC = (ASHStoryPartViewController *)viewController;
+
+    if (currentVC.index < (self.storyObjects.count - 1)){
+        return [self getPageAtIndex:currentVC.index + 1];
     } else {
         return nil;
     }
 }
 
--(void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
 {
     if (pendingViewControllers.count > 0) {
-        ASHStoryPartViewController *upcomingVC = (ASHStoryPartViewController *)pendingViewControllers[0];
-        self.lastPendingPage = upcomingVC.index;
+        ASHStoryPartViewController *pendingView = (ASHStoryPartViewController *)pendingViewControllers[0];
+        self.upcomingIndex = pendingView.index;
     }
 }
 
 -(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
 {
     if (completed) {
-        self.currentPage = self.lastPendingPage;
+        self.currentIndex = self.upcomingIndex;
     }
 }
-
 
 -(NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
     return self.storyObjects.count;
 }
 
 -(NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
-    return self.currentPage;
+    
+    return self.currentIndex;
 }
 
 @end
