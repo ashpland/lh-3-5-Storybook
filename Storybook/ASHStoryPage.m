@@ -10,6 +10,13 @@
 
 @implementation ASHStoryPage
 
-
+- (instancetype)initWithID:(NSString *)string
+{
+    self = [super init];
+    if (self) {
+        _objIDStr = string;
+    }
+    return self;
+}
 
 @end

@@ -13,5 +13,6 @@
 @interface ASHStoryPartViewController : UIViewController <AVAudioRecorderDelegate, AVAudioPlayerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) ASHStoryPage *story;
+@property (assign, nonatomic) NSInteger index;
 
 @end

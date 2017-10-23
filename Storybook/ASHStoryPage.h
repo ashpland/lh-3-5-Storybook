@@ -13,5 +13,8 @@
 
 @property (nonatomic, copy) UIImage *image;
 @property (nonatomic, copy) NSURL *audioRecordingURL;
+@property (nonatomic, strong) NSString *objIDStr;
+- (instancetype)initWithID:(NSString *)string;
+
 
 @end

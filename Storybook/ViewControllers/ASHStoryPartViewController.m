@@ -45,6 +45,11 @@
     self.storyImageView.image = _story.image ? : nil;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.storyImageView.image = _story.image ? : nil;
+}
+
 # pragma mark - Audio Recording
 
 - (IBAction)storyMicrophoneButton:(UIButton *)sender {
