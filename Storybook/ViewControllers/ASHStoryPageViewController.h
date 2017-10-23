@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 @import AVFoundation;
 
-@interface ASHStoryPageViewController : UIViewController <AVAudioRecorderDelegate, AVAudioPlayerDelegate>
+@interface ASHStoryPageViewController : UIViewController <AVAudioRecorderDelegate, AVAudioPlayerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @end

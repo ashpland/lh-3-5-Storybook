@@ -19,7 +19,7 @@
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (strong, nonatomic) AVAudioRecorder *audioRecorder;
 @property (strong, nonatomic) NSTimer *recordingAnimationTimer;
-
+@property (strong, nonatomic) UIImagePickerController *imagePickerController;
 
 @end
 
@@ -30,9 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-    
-    
-    
 }
 
 - (void)setupUI {
@@ -123,10 +120,6 @@
     [CATransaction commit];
 }
 
-- (IBAction)storyCameraButton:(UIButton *)sender {
-    
-}
-
 - (IBAction)storyImageTapped:(UITapGestureRecognizer *)sender {
     if (_audioRecorder && !self.audioRecorder.recording){
         if (_audioPlayer && self.audioPlayer.playing) {
@@ -138,4 +131,42 @@
         }
     }
 }
+
+
+- (IBAction)storyCameraButton:(UIButton *)sender {
+        
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePickerController.delegate = self;
+    imagePickerController.modalPresentationStyle = UIModalPresentationFullScreen;
+    
+    _imagePickerController = imagePickerController; // we need this for later
+    
+    [self presentViewController:self.imagePickerController animated:YES completion:^{
+        //.. done presenting
+    }];
+}
+
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    
+    self.storyImageView.image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    _imagePickerController = nil;
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        //.. done dismissing
+    }];
+}
+
+
+
+
 @end
