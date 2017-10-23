@@ -13,7 +13,8 @@
 		499E05CA1F9D633000D7362D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499E05C81F9D633000D7362D /* LaunchScreen.storyboard */; };
 		499E05CD1F9D633000D7362D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E05CC1F9D633000D7362D /* main.m */; };
 		499E05D51F9D636100D7362D /* ASHStoryPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E05D41F9D636100D7362D /* ASHStoryPage.m */; };
-		499E05D81F9D66E000D7362D /* ASHStoryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E05D71F9D66E000D7362D /* ASHStoryPageViewController.m */; };
+		499E05DD1F9E6F9C00D7362D /* ASHStoryPartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E05DC1F9E6F9C00D7362D /* ASHStoryPartViewController.m */; };
+		499E05E01F9E6FE400D7362D /* ASHStoryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E05DF1F9E6FE400D7362D /* ASHStoryPageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +28,10 @@
 		499E05CC1F9D633000D7362D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		499E05D31F9D636100D7362D /* ASHStoryPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASHStoryPage.h; sourceTree = "<group>"; };
 		499E05D41F9D636100D7362D /* ASHStoryPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASHStoryPage.m; sourceTree = "<group>"; };
-		499E05D61F9D66E000D7362D /* ASHStoryPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASHStoryPageViewController.h; sourceTree = "<group>"; };
-		499E05D71F9D66E000D7362D /* ASHStoryPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASHStoryPageViewController.m; sourceTree = "<group>"; };
+		499E05D61F9D66E000D7362D /* ASHStoryPartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASHStoryPartViewController.h; sourceTree = "<group>"; };
+		499E05DC1F9E6F9C00D7362D /* ASHStoryPartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASHStoryPartViewController.m; sourceTree = "<group>"; };
+		499E05DE1F9E6FE400D7362D /* ASHStoryPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASHStoryPageViewController.h; sourceTree = "<group>"; };
+		499E05DF1F9E6FE400D7362D /* ASHStoryPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASHStoryPageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +81,10 @@
 		499E05DB1F9D672800D7362D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				499E05D61F9D66E000D7362D /* ASHStoryPageViewController.h */,
-				499E05D71F9D66E000D7362D /* ASHStoryPageViewController.m */,
+				499E05D61F9D66E000D7362D /* ASHStoryPartViewController.h */,
+				499E05DC1F9E6F9C00D7362D /* ASHStoryPartViewController.m */,
+				499E05DE1F9E6FE400D7362D /* ASHStoryPageViewController.h */,
+				499E05DF1F9E6FE400D7362D /* ASHStoryPageViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -156,7 +161,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				499E05D81F9D66E000D7362D /* ASHStoryPageViewController.m in Sources */,
+				499E05E01F9E6FE400D7362D /* ASHStoryPageViewController.m in Sources */,
+				499E05DD1F9E6F9C00D7362D /* ASHStoryPartViewController.m in Sources */,
 				499E05CD1F9D633000D7362D /* main.m in Sources */,
 				499E05D51F9D636100D7362D /* ASHStoryPage.m in Sources */,
 				499E05BF1F9D633000D7362D /* AppDelegate.m in Sources */,

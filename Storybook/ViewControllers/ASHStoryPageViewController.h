@@ -2,13 +2,12 @@
 //  ASHStoryPageViewController.h
 //  Storybook
 //
-//  Created by Andrew on 2017-10-22.
+//  Created by Andrew on 2017-10-23.
 //  Copyright © 2017 Andrew. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-@import AVFoundation;
 
-@interface ASHStoryPageViewController : UIViewController <AVAudioRecorderDelegate, AVAudioPlayerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface ASHStoryPageViewController : UIPageViewController <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
 @end

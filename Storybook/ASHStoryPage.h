@@ -11,7 +11,7 @@
 
 @interface ASHStoryPage : NSObject
 
-@property (nonatomic, strong) UIImage *image;
-@property (nonatomic, strong) id audioRecording;
+@property (nonatomic, copy) UIImage *image;
+@property (nonatomic, copy) NSURL *audioRecordingURL;
 
 @end
