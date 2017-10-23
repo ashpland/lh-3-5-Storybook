@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSArray<ASHStoryPage *> *storyObjects;
 @property (assign, nonatomic) NSInteger currentIndex;
 @property (assign, nonatomic) NSInteger upcomingIndex;
+@property (strong, nonatomic) UIPageControl *pageControl;
 
 @end
 
@@ -34,6 +35,9 @@
     self.dataSource = self;
     self.currentIndex = 0;
     
+    
+
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIPageControl* proxy = [UIPageControl appearanceWhenContainedInInstancesOfClasses:@[[self class]]];
@@ -42,6 +46,11 @@
     [proxy setBackgroundColor:[UIColor whiteColor]];
     
     [self setViewControllers:@[[self getPageAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    
+    self.pageControl = [[self.view.subviews filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(class = %@)", [UIPageControl class]]] lastObject];
+    [self.pageControl addTarget:self action:@selector(changePageFromControl:) forControlEvents:UIControlEventTouchUpInside];
+
+    
 }
 
 - (ASHStoryPartViewController *)getPageAtIndex:(NSInteger)index{
@@ -101,5 +110,12 @@
     
     return self.currentIndex;
 }
+
+-(void)changePageFromControl:(UIPageControl *)sender {
+    [self setViewControllers:@[[self getPageAtIndex:sender.currentPage]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+}
+
+
+
 
 @end
