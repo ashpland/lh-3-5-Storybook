@@ -59,6 +59,8 @@
     if (!self.audioRecorder.recording) {
         [[AVAudioSession sharedInstance] setActive:YES error:nil];
 
+        
+        
         [self.audioRecorder record];
         
         [self animateMicrophone];
@@ -81,7 +83,10 @@
 }
 
 - (AVAudioRecorder *)recorderSetup {
-    NSArray *filePath = @[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], @"audio.m4a" ];
+    
+    NSString *fileName = [NSString stringWithFormat:@"audio%lu.m4a", self.index];
+    
+    NSArray *filePath = @[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], fileName];
     
     NSURL *fileURL = [NSURL fileURLWithPathComponents:filePath];
     
@@ -100,8 +105,6 @@
     
     newAudioRecorder.delegate = self;
     newAudioRecorder.meteringEnabled = YES;
-    
-    
     
     return newAudioRecorder;
 }

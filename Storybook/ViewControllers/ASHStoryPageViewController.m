@@ -49,8 +49,6 @@
     
     self.pageControl = [[self.view.subviews filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(class = %@)", [UIPageControl class]]] lastObject];
     [self.pageControl addTarget:self action:@selector(changePageFromControl:) forControlEvents:UIControlEventTouchUpInside];
-
-    
 }
 
 - (ASHStoryPartViewController *)getPageAtIndex:(NSInteger)index{
