@@ -8,24 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		499E05BF1F9D633000D7362D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E05BE1F9D633000D7362D /* AppDelegate.m */; };
-		499E05C21F9D633000D7362D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E05C11F9D633000D7362D /* ViewController.m */; };
 		499E05C51F9D633000D7362D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499E05C31F9D633000D7362D /* Main.storyboard */; };
 		499E05C71F9D633000D7362D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499E05C61F9D633000D7362D /* Assets.xcassets */; };
 		499E05CA1F9D633000D7362D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499E05C81F9D633000D7362D /* LaunchScreen.storyboard */; };
 		499E05CD1F9D633000D7362D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E05CC1F9D633000D7362D /* main.m */; };
+		499E05D51F9D636100D7362D /* ASHStoryPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E05D41F9D636100D7362D /* ASHStoryPage.m */; };
+		499E05D81F9D66E000D7362D /* ASHStoryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E05D71F9D66E000D7362D /* ASHStoryPageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		499E05BA1F9D632F00D7362D /* Storybook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Storybook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		499E05BD1F9D632F00D7362D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		499E05BE1F9D633000D7362D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		499E05C01F9D633000D7362D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		499E05C11F9D633000D7362D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		499E05C41F9D633000D7362D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		499E05C61F9D633000D7362D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		499E05C91F9D633000D7362D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		499E05CB1F9D633000D7362D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		499E05CC1F9D633000D7362D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		499E05D31F9D636100D7362D /* ASHStoryPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASHStoryPage.h; sourceTree = "<group>"; };
+		499E05D41F9D636100D7362D /* ASHStoryPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASHStoryPage.m; sourceTree = "<group>"; };
+		499E05D61F9D66E000D7362D /* ASHStoryPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASHStoryPageViewController.h; sourceTree = "<group>"; };
+		499E05D71F9D66E000D7362D /* ASHStoryPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASHStoryPageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +61,11 @@
 		499E05BC1F9D632F00D7362D /* Storybook */ = {
 			isa = PBXGroup;
 			children = (
+				499E05D31F9D636100D7362D /* ASHStoryPage.h */,
+				499E05D41F9D636100D7362D /* ASHStoryPage.m */,
+				499E05DB1F9D672800D7362D /* ViewControllers */,
 				499E05BD1F9D632F00D7362D /* AppDelegate.h */,
 				499E05BE1F9D633000D7362D /* AppDelegate.m */,
-				499E05C01F9D633000D7362D /* ViewController.h */,
-				499E05C11F9D633000D7362D /* ViewController.m */,
 				499E05C31F9D633000D7362D /* Main.storyboard */,
 				499E05C61F9D633000D7362D /* Assets.xcassets */,
 				499E05C81F9D633000D7362D /* LaunchScreen.storyboard */,
@@ -69,6 +73,15 @@
 				499E05CC1F9D633000D7362D /* main.m */,
 			);
 			path = Storybook;
+			sourceTree = "<group>";
+		};
+		499E05DB1F9D672800D7362D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				499E05D61F9D66E000D7362D /* ASHStoryPageViewController.h */,
+				499E05D71F9D66E000D7362D /* ASHStoryPageViewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,6 +110,7 @@
 		499E05B21F9D632F00D7362D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = ASH;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Andrew;
 				TargetAttributes = {
@@ -142,8 +156,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				499E05C21F9D633000D7362D /* ViewController.m in Sources */,
+				499E05D81F9D66E000D7362D /* ASHStoryPageViewController.m in Sources */,
 				499E05CD1F9D633000D7362D /* main.m in Sources */,
+				499E05D51F9D636100D7362D /* ASHStoryPage.m in Sources */,
 				499E05BF1F9D633000D7362D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

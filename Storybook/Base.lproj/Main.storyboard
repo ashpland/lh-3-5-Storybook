@@ -1,23 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Story Page View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ASHStoryPageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qK7-My-72f">
+                                <rect key="frame" x="0.0" y="92" width="414" height="368"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="iIQ-Rx-dPg" appends="YES" id="nTB-JU-ewc"/>
+                                </connections>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="fhv-Cz-3Q4">
+                                <rect key="frame" x="128" y="539" width="158" height="98"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hP-7W-Ix1">
+                                        <rect key="frame" x="0.0" y="0.0" width="54" height="98"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <state key="normal" title="📷"/>
+                                        <connections>
+                                            <action selector="storyCameraButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GlF-KI-bTw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRa-yC-a0c">
+                                        <rect key="frame" x="104" y="0.0" width="54" height="98"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <state key="normal" title="🎤"/>
+                                        <connections>
+                                            <action selector="storyMicrophoneButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Lp-Yi-lGc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qK7-My-72f" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="1jQ-kq-nDl"/>
+                            <constraint firstItem="qK7-My-72f" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="36q-gx-0fH"/>
+                            <constraint firstItem="fhv-Cz-3Q4" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="70o-VR-mVP"/>
+                            <constraint firstItem="qK7-My-72f" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="7Ex-sE-cmh"/>
+                            <constraint firstItem="fhv-Cz-3Q4" firstAttribute="top" secondItem="qK7-My-72f" secondAttribute="bottom" constant="79" id="KCq-YI-CeS"/>
+                            <constraint firstItem="qK7-My-72f" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.75" id="NYF-eC-Y8Z"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fhv-Cz-3Q4" secondAttribute="bottom" constant="99" id="w1n-Bg-wUI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="microphoneButtonLabel" destination="fRa-yC-a0c" id="S2S-DN-wbk"/>
+                        <outlet property="storyImageView" destination="qK7-My-72f" id="i3D-KD-ngn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iIQ-Rx-dPg">
+                    <connections>
+                        <action selector="storyImageTapped:" destination="BYZ-38-t0r" id="H7w-Ij-yAj"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>
