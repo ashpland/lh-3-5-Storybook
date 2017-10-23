@@ -133,19 +133,45 @@
 }
 
 
-- (IBAction)storyCameraButton:(UIButton *)sender {
-        
+- (void)getPhotoFrom:(UIImagePickerControllerSourceType)sourceType {
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
     imagePickerController.delegate = self;
     imagePickerController.modalPresentationStyle = UIModalPresentationFullScreen;
-    
+    imagePickerController.sourceType = sourceType;
+
     _imagePickerController = imagePickerController; // we need this for later
+
+    [self presentViewController:self.imagePickerController animated:YES completion:^{}];
+}
+
+- (IBAction)storyCameraButton:(UIButton *)sender {
+ 
+    UIAlertController *photoChoice = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    [self presentViewController:self.imagePickerController animated:YES completion:^{
-        //.. done presenting
-    }];
+    UIAlertAction *takePictureChoice = [UIAlertAction
+                                   actionWithTitle:@"Take Picture"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {
+                                       [self getPhotoFrom:UIImagePickerControllerSourceTypeCamera];
+                                   }];
+    
+    UIAlertAction *choosePictureChoice = [UIAlertAction
+                                   actionWithTitle:@"Choose from Library"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {
+                                       [self getPhotoFrom:UIImagePickerControllerSourceTypePhotoLibrary];
+                                   }];
+    
+    UIAlertAction *cancelChoice = [UIAlertAction
+                                          actionWithTitle:@"Cancel"
+                                          style:UIAlertActionStyleCancel
+                                          handler:^(UIAlertAction * action) {}];
+    [photoChoice addAction:takePictureChoice];
+    [photoChoice addAction:choosePictureChoice];
+    [photoChoice addAction:cancelChoice];
+
+    [self presentViewController:photoChoice animated:YES completion:nil];
 }
 
 
