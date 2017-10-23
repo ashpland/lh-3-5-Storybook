@@ -25,7 +25,7 @@
 
 @implementation ASHStoryPageViewController
 
-
+# pragma mark - Setup
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,38 +40,8 @@
     layer.shadowOpacity = 0.0f;
 }
 
-- (AVAudioRecorder *)recorderSetup {
-    NSArray *filePath = @[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], @"audio.m4a" ];
 
-    NSURL *fileURL = [NSURL fileURLWithPathComponents:filePath];
-    
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-
-    NSMutableDictionary<NSString *, NSNumber *> *recordSettings = @{
-                                            AVFormatIDKey : [NSNumber numberWithInteger:kAudioFormatMPEG4AAC],
-                                            AVSampleRateKey : @44100.0,
-                                            AVNumberOfChannelsKey : @2
-                                            }.mutableCopy;
-    AVAudioRecorder *newAudioRecorder = [[AVAudioRecorder alloc] initWithURL:fileURL
-                                                     settings:recordSettings
-                                                        error:nil];
-    
-    newAudioRecorder.delegate = self;
-    newAudioRecorder.meteringEnabled = YES;
-    
-    
-    
-    return newAudioRecorder;
-}
-
-
-
--(AVAudioRecorder *)audioRecorder {
-    if (!_audioRecorder)
-        _audioRecorder = [self recorderSetup];
-    return _audioRecorder;
-}
-
+# pragma mark - Audio Recording
 
 - (IBAction)storyMicrophoneButton:(UIButton *)sender {
     if (_audioPlayer && self.audioPlayer.playing)
@@ -94,6 +64,37 @@
         [self.microphoneButtonLabel.layer removeAllAnimations];
     }
 }
+
+-(AVAudioRecorder *)audioRecorder {
+    if (!_audioRecorder)
+        _audioRecorder = [self recorderSetup];
+    return _audioRecorder;
+}
+
+- (AVAudioRecorder *)recorderSetup {
+    NSArray *filePath = @[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], @"audio.m4a" ];
+    
+    NSURL *fileURL = [NSURL fileURLWithPathComponents:filePath];
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    
+    NSMutableDictionary<NSString *, NSNumber *> *recordSettings = @{
+                                                                    AVFormatIDKey : [NSNumber numberWithInteger:kAudioFormatMPEG4AAC],
+                                                                    AVSampleRateKey : @44100.0,
+                                                                    AVNumberOfChannelsKey : @2
+                                                                    }.mutableCopy;
+    AVAudioRecorder *newAudioRecorder = [[AVAudioRecorder alloc] initWithURL:fileURL
+                                                                    settings:recordSettings
+                                                                       error:nil];
+    
+    newAudioRecorder.delegate = self;
+    newAudioRecorder.meteringEnabled = YES;
+    
+    
+    
+    return newAudioRecorder;
+}
+
 
 -(void)animateMicrophone {
     [CATransaction begin];
@@ -133,17 +134,8 @@
 }
 
 
-- (void)getPhotoFrom:(UIImagePickerControllerSourceType)sourceType {
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    imagePickerController.delegate = self;
-    imagePickerController.modalPresentationStyle = UIModalPresentationFullScreen;
-    imagePickerController.sourceType = sourceType;
+# pragma mark - Photo Selection
 
-    _imagePickerController = imagePickerController; // we need this for later
-
-    [self presentViewController:self.imagePickerController animated:YES completion:^{}];
-}
 
 - (IBAction)storyCameraButton:(UIButton *)sender {
  
@@ -174,12 +166,21 @@
     [self presentViewController:photoChoice animated:YES completion:nil];
 }
 
+- (void)getPhotoFrom:(UIImagePickerControllerSourceType)sourceType {
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.delegate = self;
+    imagePickerController.modalPresentationStyle = UIModalPresentationFullScreen;
+    imagePickerController.sourceType = sourceType;
+    
+    _imagePickerController = imagePickerController; // we need this for later
+    
+    [self presentViewController:self.imagePickerController animated:YES completion:^{}];
+}
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    //UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    
     self.storyImageView.image = [info valueForKey:UIImagePickerControllerOriginalImage];
     [self dismissViewControllerAnimated:YES completion:nil];
     _imagePickerController = nil;
@@ -187,9 +188,7 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        //.. done dismissing
-    }];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 
